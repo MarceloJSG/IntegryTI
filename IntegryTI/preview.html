@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IntegryTI SpA | Soluciones Tecnológicas</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f5f7fb;
+      color:#071B34;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --primary:#071B34;
+      --secondary:#1D8FFF;
+      --accent:#00D1D1;
+      --white:#ffffff;
+      --gray:#6B7280;
+      --light:#F5F7FA;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+      background:rgba(7,27,52,0.92);
+      backdrop-filter:blur(10px);
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:white;
+      font-size:1.4rem;
+      font-weight:700;
+    }
+
+    .logo img{
+      width:100px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:35px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:0.95rem;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:var(--secondary);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      background:
+      linear-gradient(rgba(7,27,52,0.80),rgba(7,27,52,0.85)),
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8% 60px;
+    }
+
+    .hero-container{
+      width:100%;
+      max-width:1400px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      color:white;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero-text h1 span{
+      color:var(--secondary);
+    }
+
+    .hero-text p{
+      color:#d6dbe3;
+      font-size:1.15rem;
+      line-height:1.8;
+      max-width:620px;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 28px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:var(--secondary);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#1679da;
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.25);
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:white;
+      color:var(--primary);
+    }
+
+.btn-whatsapp{
+    background:rgba(37,211,102,0.15);
+    border:1px solid rgba(37,211,102,0.35);
+    color:white;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:15px 28px;
+    border-radius:14px;
+
+    text-decoration:none;
+    font-weight:600;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.3s;
+}
+
+.btn-whatsapp:hover{
+    background:rgba(37,211,102,0.25);
+    border-color:rgba(37,211,102,0.55);
+    transform:translateY(-3px);
+}
+
+.btn-whatsapp:hover{
+    background:#1ebe5d;
+    transform:translateY(-2px);
+}
+
+.btn-whatsapp span{
+    font-size:1.2rem;
+}
+
+    /* FORM */
+
+    .contact-card{
+      background:white;
+      padding:35px;
+      border-radius:24px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.18);
+    }
+
+    .contact-card h2{
+      color:var(--primary);
+      margin-bottom:10px;
+      font-size:1.8rem;
+    }
+
+    .contact-card p{
+      color:var(--gray);
+      margin-bottom:25px;
+      line-height:1.6;
+    }
+
+    .contact-card form{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+    }
+
+    .contact-card input,
+    .contact-card textarea,
+    .contact-card select{
+      padding:14px;
+      border:1px solid #dce2ea;
+      border-radius:10px;
+      font-size:0.95rem;
+      outline:none;
+      transition:0.3s;
+    }
+
+    .contact-card input:focus,
+    .contact-card textarea:focus,
+    .contact-card select:focus{
+      border-color:var(--secondary);
+    }
+
+    .contact-card textarea{
+      resize:none;
+      height:120px;
+    }
+
+    .contact-card button{
+      border:none;
+      background:var(--secondary);
+      color:white;
+      padding:15px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .contact-card button:hover{
+      background:#1679da;
+    }
+
+    /* SERVICES */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title span{
+      color:var(--secondary);
+      font-weight:600;
+      font-size:1rem;
+    }
+
+    .section-title h2{
+      font-size:2.8rem;
+      margin-top:10px;
+      color:var(--primary);
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+    }
+
+    .service-card{
+      background:white;
+      padding:35px;
+      border-radius:22px;
+      transition:0.3s;
+      box-shadow:0 8px 25px rgba(0,0,0,0.05);
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .service-icon{
+      width:60px;
+      height:60px;
+      background:rgba(29,143,255,0.1);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      margin-bottom:20px;
+      color:var(--secondary);
+    }
+
+    .service-card h3{
+      margin-bottom:15px;
+      color:var(--primary);
+    }
+
+    .service-card p{
+      color:var(--gray);
+      line-height:1.7;
+    }
+
+    /* STATS */
+
+    .stats{
+      background:var(--primary);
+      color:white;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+      text-align:center;
+    }
+
+    .stat h3{
+      font-size:3rem;
+      color:var(--secondary);
+      margin-bottom:10px;
+    }
+
+    .stat p{
+      color:#d6dbe3;
+    }
+
+    /* CTA */
+
+.why-section{
+    background:#f5f7fb;
+    padding:120px 8%;
+}
+
+.why-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.why-text span{
+    color:#1D8FFF;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.why-text h2{
+    font-size:3rem;
+    line-height:1.2;
+    margin:20px 0;
+    color:#071B34;
+}
+
+.why-text p{
+    color:#6B7280;
+    line-height:1.8;
+    margin-bottom:35px;
+    max-width:550px;
+}
+
+.why-btn{
+    display:inline-block;
+    background:#1D8FFF;
+    color:white;
+    padding:15px 28px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.why-btn:hover{
+    background:#1679da;
+}
+
+.benefits{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.benefit-card{
+    background:white;
+    border:1px solid #dbe4f0;
+    padding:24px;
+    border-radius:18px;
+    color:#071B34;
+    font-weight:500;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    transition:0.3s;
+
+    display:flex;
+    align-items:center;
+}
+
+.benefit-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+@media(max-width:1000px){
+
+    .why-container{
+        grid-template-columns:1fr;
+    }
+
+    .why-text h2{
+        font-size:2.2rem;
+    }
+
+}
+    /* FOOTER */
+
+    footer{
+      background:#03101f;
+      padding:50px 8%;
+      color:white;
+      margin-top:100px;
+    }
+
+    .footer-content{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:30px;
+    }
+
+    .footer-logo{
+      font-size:1.8rem;
+      font-weight:700;
+    }
+
+    .footer-logo span{
+      color:var(--secondary);
+    }
+
+    .footer-info p{
+      color:#c9d3df;
+      margin-top:10px;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media(max-width:1000px){
+
+      .hero-container,
+      .cta{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .cta{
+        padding:45px 30px;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero-text h1{
+        font-size:2.3rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+      .cta h2{
+        font-size:2rem;
+      }
+
+      .contact-card{
+        padding:25px;
+      }
+
+    }
+
+    .popup{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.6);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.3s;
+
+    z-index:9999;
+}
+
+.popup.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.popup-content{
+    background:white;
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+    max-width:420px;
+    width:90%;
+
+    animation:popupShow 0.3s ease;
+}
+
+.popup-icon{
+    width:70px;
+    height:70px;
+
+    background:#1D8FFF;
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:2rem;
+
+    margin:0 auto 20px;
+}
+
+.popup-content h2{
+    color:#071B34;
+    margin-bottom:15px;
+}
+
+.popup-content p{
+    color:#6B7280;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.popup-content button{
+    background:#1D8FFF;
+    color:white;
+    border:none;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+    font-weight:600;
+}
+
+@keyframes popupShow{
+
+    from{
+        transform:translateY(20px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+}
+
+  </style>
+
+  <script>
+
+const form = document.getElementById("contactForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const response = await fetch(form.action,{
+        method:"POST",
+        body:formData,
+        headers:{
+            'Accept':'application/json'
+        }
+    });
+
+    if(response.ok){
+
+        popup.classList.add("active");
+
+        form.reset();
+        
+        form.querySelector("select").selectedIndex = 0;
+
+    }else{
+
+        alert("Ocurrió un error al enviar el formulario.");
+
+    }
+
+});
+
+function closePopup(){
+
+    popup.classList.remove("active");
+
+}
+
+</script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      <img src="Untitled design.svg" alt="IntegryTI">
+      Integry<span style="color:#1D8FFF;">TI</span>
+    </div>
+
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <div class="hero-text">
+
+        <h1>
+          Soluciones <span>Tecnológicas</span><br>
+          para personas y empresas
+        </h1>
+
+        <p>
+          En IntegryTI SpA entregamos servicios de soporte informático,
+          redes y soluciones tecnológicas con un enfoque profesional,
+          moderno y confiable.
+        </p>
+
+        <div class="hero-buttons">
+
+
+          <a href="https://wa.me/56938743520"
+          class="btn btn-whatsapp"
+          target="_blank">
+
+          <span>💬</span>
+          WhatsApp
+
+</a>
+
+        </div>
+
+      </div>
+
+      <!-- FORM -->
+
+      <div class="contact-card" id="contacto">
+
+        <h2>Conversemos</h2>
+
+        <p>
+          Completa el formulario y nos pondremos en contacto contigo.
+        </p>
+<!-- CORREO DE DESTINO -->
+        <form
+          action="https://formsubmit.co/ajax/marcelojose.sg2004@gmail.com" 
+          method="POST"
+          id="contactForm">
+
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+
+            <input type="text" name="telefono" placeholder="Teléfono" required>
+
+            <input type="text" name="empresa" placeholder="Empresa">
+
+          <select name="servicio" required>
+            <option value="" selected disabled hidden>
+            Servicio requerido
+            </option>
+
+            <option>Soporte técnico</option>
+            <option>Redes y cableado</option>
+            <option>Mantenimiento</option>
+            <option>Desarrollo de Software</option>
+            <option>Asesoría tecnológica</option>
+          </select>
+
+          <textarea
+          name="mensaje"
+          placeholder="Mensaje"
+          required></textarea>
+
+          <button type="submit">
+              Enviar formulario
+          </button>
+
+        </form>
+
+      <div class="popup" id="popup">
+
+        <div class="popup-content">
+
+        <div class="popup-icon">✓</div>
+
+          <h2>Mensaje enviado</h2>
+
+        <p>
+            Gracias por contactarte con IntegryTI SpA.
+            Te responderemos a la brevedad.
+        </p>
+
+          <button onclick="closePopup()">
+            Cerrar
+          </button>
+
+      </div>
+
+      </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="servicios">
+
+    <div class="section-title">
+
+      <span>NUESTROS SERVICIOS</span>
+
+      <h2>Servicios tecnológicos</h2>
+
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+
+        <div class="service-icon">⚙️</div>
+
+        <h3>Soporte Técnico</h3>
+
+        <p>
+          Diagnóstico, reparación y optimización de equipos informáticos.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <div class="service-icon">🌐</div>
+
+        <h3>Redes y Conectividad</h3>
+
+        <p>
+          Configuración de redes, routers y soluciones de conectividad.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <div class="service-icon">🖨</div>
+
+        <h3>Instalación</h3>
+
+        <p>
+          Instalación y configuración de equipos y periféricos.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <div class="service-icon">🔧</div>
+
+        <h3>Mantenimiento</h3>
+
+        <p>
+          Limpieza, formateo y mejora de rendimiento de equipos.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <div class="service-icon">💻</div>
+
+        <h3>Desarrollo de Software</h3>
+
+        <p>
+          Desarrollo de soluciones y sistemas adaptados a las necesidades del cliente.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <div class="service-icon">🏢</div>
+
+        <h3>Soporte Empresas</h3>
+
+        <p>
+          Servicios tecnológicos orientados a negocios y pymes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats" id="nosotros">
+
+    <div class="section-title">
+
+      <span style="color:#00D1D1;">INTEGRYTI SPA</span>
+
+      <h2 style="color:white;">
+        Tecnología con confianza
+      </h2>
+
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat">
+
+        <h3>+500</h3>
+
+        <p>Equipos intervenidos</p>
+
+      </div>
+
+      <div class="stat">
+
+        <h3>+50</h3>
+
+        <p>Clientes atendidos</p>
+
+      </div>
+
+      <div class="stat">
+
+        <h3>+20</h3>
+
+        <p>Redes configuradas</p>
+
+      </div>
+
+      <div class="stat">
+
+        <h3>&lt;24h</h3>
+
+        <p>Tiempo de respuesta</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Beneficios -->
+
+<section class="why-section">
+
+    <div class="why-container">
+
+        <div class="why-text">
+
+            <span>POR QUÉ ELEGIRNOS</span>
+
+            <h2>
+                Tecnología confiable
+                para personas y empresas
+            </h2>
+
+            <p>
+                En IntegryTI SpA entregamos soluciones
+                tecnológicas enfocadas en soporte,
+                conectividad y atención eficiente,
+                adaptándonos a las necesidades de cada cliente.
+            </p>
+
+        </div>
+
+        <div class="benefits">
+
+            <div class="benefit-card">
+                ✔ Atención personalizada
+            </div>
+
+            <div class="benefit-card">
+                ✔ Respuesta rápida
+            </div>
+
+            <div class="benefit-card">
+                ✔ Soporte remoto y presencial
+            </div>
+
+            <div class="benefit-card">
+                ✔ Soluciones eficientes
+            </div>
+
+            <div class="benefit-card">
+                ✔ Compromiso y confianza
+            </div>
+
+            <div class="benefit-card">
+                ✔ Tecnología para empresas y personas
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+
+        <div class="footer-logo">
+          Integry<span>TI</span>
+        </div>
+
+        <div class="footer-info">
+
+          <p>Soluciones Tecnológicas</p>
+
+          <p>Soporte • Redes • Tecnología</p>
+
+        </div>
+
+      </div>
+
+      <div class="footer-info">
+
+        <p>📍 Chillán,Chile </p>
+        <p>📧 integrati360@gmail.com </p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
