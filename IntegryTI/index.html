@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IntegryTI SpA | Soluciones Tecnológicas</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="IntegryTI SpA ofrece soporte informático, redes, mantenimiento, desarrollo de software y soluciones tecnológicas para personas, pymes y empresas." />
+  <meta name="keywords" content="IntegryTI, soporte informático, redes, desarrollo software, mantenimiento computadores, servicios tecnológicos" />
+  <meta name="author" content="IntegryTI SpA" />
+  <meta name="theme-color" content="#071B34" />
+
+  <!-- Open Graph para WhatsApp / redes sociales -->
+  <meta property="og:title" content="IntegryTI SpA | Soluciones Tecnológicas" />
+  <meta property="og:description" content="Soporte informático, redes y soluciones tecnológicas para personas y empresas." />
+  <meta property="og:image" content="https://rind-calzone-crouton.ngrok-free.dev/IntegryTI/IntegryTI/Untitled design.png" />
+  <meta property="og:url" content="https://integryti.cl" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title"
+content="IntegryTI SpA | Soluciones Tecnológicas">
+
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- Fuentes e iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root{
+      --primary:#071B34;
+      --primary-2:#0d2f5e;
+      --secondary:#1D8FFF;
+      --accent:#00D1D1;
+      --white:#ffffff;
+      --light:#F5F7FB;
+      --gray:#6B7280;
+      --border:#dbe4f0;
+      --shadow:0 18px 40px rgba(7,27,52,0.10);
+      --radius:22px;
+    }
+
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--light);
+      color:var(--primary);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    section{
+      padding:100px 8%;
+    }
+
+    /* Loader */
+    .loader{
+      position:fixed;
+      inset:0;
+      background:#03101f;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:99999;
+      transition:opacity .45s ease, visibility .45s ease;
+    }
+
+    .loader.hidden{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .loader-box{
+      text-align:center;
+      color:white;
+    }
+
+    .loader-box img{
+      width:80px;
+      margin:0 auto 18px;
+      animation:pulse 1.2s infinite ease-in-out;
+    }
+
+    .loader-box span{
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    @keyframes pulse{
+      0%,100%{ transform:scale(1); opacity:.75; }
+      50%{ transform:scale(1.08); opacity:1; }
+    }
+
+    /* Navbar */
+    .navbar{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+      padding:18px 8%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(7,27,52,0.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      transition:.3s;
+    }
+
+    .navbar.scrolled{
+      padding:12px 8%;
+      background:rgba(7,27,52,0.95);
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:white;
+      font-size:1.55rem;
+      font-weight:800;
+    }
+
+    .brand img{
+      width:58px;
+      height:auto;
+    }
+
+    .brand span{
+      color:var(--secondary);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      color:white;
+      font-weight:500;
+      font-size:.95rem;
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--secondary);
+    }
+
+    .mobile-btn{
+      display:none;
+      background:none;
+      border:none;
+      color:white;
+      font-size:1.5rem;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;
+      padding:130px 8% 80px;
+      background:
+        linear-gradient(90deg,rgba(7,27,52,.92),rgba(7,27,52,.72)),
+        url('assets/hero.jpg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-container{
+      width:100%;
+      max-width:1420px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.15fr 430px;
+      gap:70px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border-radius:999px;
+      color:#dbeafe;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      margin-bottom:24px;
+      font-size:.9rem;
+      backdrop-filter:blur(10px);
+    }
+
+    .badge i{
+      color:var(--accent);
+    }
+
+    .hero h1{
+      color:white;
+      font-size:clamp(2.7rem,5vw,5.2rem);
+      line-height:1.05;
+      letter-spacing:-2px;
+      margin-bottom:24px;
+    }
+
+    .hero h1 span{
+      color:var(--secondary);
+    }
+
+    .hero p{
+      color:#dbe4f0;
+      font-size:1.12rem;
+      line-height:1.8;
+      max-width:700px;
+      margin-bottom:35px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 28px;
+      border-radius:14px;
+      font-weight:700;
+      transition:.3s;
+      cursor:pointer;
+      border:none;
+      font-size:.96rem;
+    }
+
+    .btn-primary{
+      color:white;
+      background:var(--secondary);
+      box-shadow:0 12px 25px rgba(29,143,255,.25);
+    }
+
+    .btn-primary:hover{
+      background:#1679da;
+      transform:translateY(-3px);
+    }
+
+    .btn-whatsapp{
+      background:rgba(255,255,255,.08);
+      color:white;
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(10px);
+    }
+
+    .btn-whatsapp i{
+      color:#25D366;
+      font-size:1.15rem;
+    }
+
+    .btn-whatsapp:hover{
+      background:rgba(255,255,255,.14);
+      transform:translateY(-3px);
+    }
+
+    /* Formulario */
+    .contact-card{
+      background:white;
+      padding:36px;
+      border-radius:28px;
+      box-shadow:0 24px 60px rgba(0,0,0,.22);
+      animation:floatCard 5s ease-in-out infinite;
+    }
+
+    @keyframes floatCard{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+
+    .contact-card h2{
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:12px;
+    }
+
+    .contact-card p{
+      color:var(--gray);
+      line-height:1.7;
+      margin-bottom:24px;
+    }
+
+    .contact-card form{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:14px 15px;
+      border:1px solid var(--border);
+      border-radius:11px;
+      font-family:inherit;
+      font-size:.94rem;
+      outline:none;
+      background:white;
+      color:var(--primary);
+      transition:.25s;
+    }
+
+    textarea{
+      min-height:110px;
+      resize:none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--secondary);
+      box-shadow:0 0 0 4px rgba(29,143,255,.10);
+    }
+
+    .contact-card button{
+      margin-top:4px;
+    }
+
+    /* Títulos */
+    .section-title{
+      max-width:850px;
+      margin:0 auto 58px;
+      text-align:center;
+    }
+
+    .section-title span{
+      color:var(--secondary);
+      font-weight:800;
+      letter-spacing:1.5px;
+      font-size:.85rem;
+    }
+
+    .section-title h2{
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      margin-top:14px;
+      letter-spacing:-1px;
+    }
+
+    .section-title p{
+      color:var(--gray);
+      margin-top:18px;
+      line-height:1.8;
+    }
+
+    /* Servicios */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:26px;
+      max-width:1240px;
+      margin:0 auto;
+    }
+
+    .service-card{
+      background:white;
+      padding:34px;
+      border-radius:var(--radius);
+      border:1px solid rgba(219,228,240,.75);
+      box-shadow:0 10px 28px rgba(7,27,52,.05);
+      transition:.35s;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow);
+      border-color:rgba(29,143,255,.30);
+    }
+
+    .service-icon{
+      width:62px;
+      height:62px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:18px;
+      background:linear-gradient(135deg,rgba(29,143,255,.12),rgba(0,209,209,.12));
+      color:var(--secondary);
+      font-size:1.45rem;
+      margin-bottom:22px;
+    }
+
+    .service-card h3{
+      font-size:1.22rem;
+      margin-bottom:12px;
+    }
+
+    .service-card p{
+      color:var(--gray);
+      line-height:1.75;
+    }
+
+    /* Proceso */
+    .process{
+      background:white;
+    }
+
+    .process-grid{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+
+    .process-card{
+      background:var(--light);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+      transition:.3s;
+    }
+
+    .process-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow);
+    }
+
+    .process-number{
+      font-size:2.4rem;
+      font-weight:800;
+      color:rgba(29,143,255,.18);
+      margin-bottom:18px;
+    }
+
+    .process-card h3{
+      margin-bottom:10px;
+    }
+
+    .process-card p{
+      color:var(--gray);
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    /* Por qué elegirnos */
+    .why-section{
+      background:linear-gradient(135deg,#071B34,#0b274f);
+      color:white;
+    }
+
+    .why-container{
+      max-width:1240px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1.1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .why-text span{
+      color:var(--accent);
+      font-weight:800;
+      letter-spacing:1.5px;
+      font-size:.85rem;
+    }
+
+    .why-text h2{
+      font-size:clamp(2rem,3.8vw,3.5rem);
+      line-height:1.15;
+      margin:18px 0;
+      letter-spacing:-1.2px;
+    }
+
+    .why-text p{
+      color:#dbe4f0;
+      line-height:1.85;
+      margin-bottom:30px;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .benefit-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:white;
+      padding:22px;
+      border-radius:18px;
+      display:flex;
+      gap:13px;
+      align-items:center;
+      font-weight:600;
+      backdrop-filter:blur(10px);
+      transition:.3s;
+    }
+
+    .benefit-card i{
+      color:var(--accent);
+    }
+
+    .benefit-card:hover{
+      transform:translateY(-5px);
+      background:rgba(255,255,255,.13);
+    }
+
+    /* Sobre nosotros */
+    .about-container{
+      max-width:1180px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about-card{
+      background:white;
+      border-radius:30px;
+      padding:45px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+    }
+
+    .about-card h2{
+      font-size:2.6rem;
+      line-height:1.16;
+      margin-bottom:20px;
+    }
+
+    .about-card p{
+      color:var(--gray);
+      line-height:1.85;
+      margin-bottom:20px;
+    }
+
+    .about-image{
+      min-height:430px;
+      border-radius:30px;
+      background:
+        linear-gradient(rgba(7,27,52,.30),rgba(7,27,52,.45)),
+        url('image1.jpeg');
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow);
+    }
+
+    /* Estadísticas */
+    .stats-grid{
+      max-width:1000px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      text-align:center;
+    }
+
+    .stat-card{
+      background:white;
+      padding:32px 22px;
+      border-radius:22px;
+      border:1px solid var(--border);
+      box-shadow:0 10px 28px rgba(7,27,52,.05);
+    }
+
+    .stat-card h3{
+      font-size:2.4rem;
+      color:var(--secondary);
+      margin-bottom:8px;
+    }
+
+    .stat-card p{
+      color:var(--gray);
+      font-weight:500;
+    }
+
+    /* CTA final */
+    .cta-section{
+      padding-top:40px;
+    }
+
+    .cta-box{
+      max-width:1180px;
+      margin:0 auto;
+      background:linear-gradient(135deg,#071B34,#0d2f5e);
+      color:white;
+      border-radius:34px;
+      padding:65px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:40px;
+      align-items:center;
+      box-shadow:0 25px 70px rgba(7,27,52,.22);
+    }
+
+    .cta-box h2{
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      line-height:1.15;
+      margin-bottom:16px;
+    }
+
+    .cta-box p{
+      color:#dbe4f0;
+      line-height:1.8;
+      max-width:690px;
+    }
+
+    /* Footer */
+    footer{
+      background:#03101f;
+      color:white;
+      padding:60px 8% 26px;
+    }
+
+    .footer-container{
+      max-width:1240px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr;
+      gap:40px;
+      padding-bottom:36px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:1.6rem;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .footer-brand img{
+      width:80px;
+    }
+
+    .footer-brand span{
+      color:var(--secondary);
+    }
+
+    .footer-container p,
+    .footer-container a{
+      color:#c9d3df;
+      line-height:1.8;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .footer-container a:hover{
+      color:var(--secondary);
+    }
+
+    .footer-title{
+      color:white;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .footer-bottom{
+      max-width:1240px;
+      margin:24px auto 0;
+      color:#9ca3af;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-size:.92rem;
+    }
+
+    /* WhatsApp flotante */
+    .floating-whatsapp{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:#25D366;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.75rem;
+      z-index:998;
+      box-shadow:0 16px 35px rgba(37,211,102,.35);
+      transition:.3s;
+    }
+/* Ocultar en pantallas de PC */
+.btn-mobile-only {
+  display: none;
+}
+
+/* Mostrar solo en pantallas de teléfono/tablet */
+@media (max-width: 780px) {
+  .btn-mobile-only {
+    display: inline-flex;
+  }
+}
+
+    .floating-whatsapp:hover{
+      transform:translateY(-5px) scale(1.04);
+      background:#1ebe5d;
+    }
+
+    /* Popup */
+    .popup{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.62);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      visibility:hidden;
+      transition:.3s;
+      z-index:9999;
+      padding:20px;
+    }
+
+    .popup.active{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .popup-content{
+      background:white;
+      max-width:430px;
+      width:100%;
+      padding:42px;
+      border-radius:28px;
+      text-align:center;
+      animation:popupShow .3s ease;
+    }
+
+    @keyframes popupShow{
+      from{ transform:translateY(20px); opacity:0; }
+      to{ transform:translateY(0); opacity:1; }
+    }
+
+    .popup-icon{
+      width:74px;
+      height:74px;
+      margin:0 auto 20px;
+      background:var(--secondary);
+      color:white;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+    }
+
+    .popup-content h2{
+      margin-bottom:12px;
+    }
+
+    .popup-content p{
+      color:var(--gray);
+      line-height:1.7;
+      margin-bottom:24px;
+    }
+
+    /* Animaciones de entrada */
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:all .75s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Responsive */
+    @media(max-width:1050px){
+      .hero-container,
+      .why-container,
+      .about-container,
+      .cta-box{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .process-grid,
+      .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .contact-card{
+        animation:none;
+      }
+    }
+
+    @media(max-width:780px){
+      section{
+        padding:76px 6%;
+      }
+
+      .navbar{
+        padding:14px 6%;
+      }
+
+      .mobile-btn{
+        display:block;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:74px;
+        left:6%;
+        right:6%;
+        background:#071B34;
+        border:1px solid rgba(255,255,255,.10);
+        border-radius:18px;
+        padding:22px;
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .brand{
+        font-size:1.25rem;
+      }
+
+      .brand img{
+        width:46px;
+      }
+
+      .hero{
+        padding:120px 6% 70px;
+      }
+
+      .hero h1{
+        letter-spacing:-1px;
+      }
+
+      .contact-card,
+      .about-card,
+      .cta-box{
+        padding:30px;
+      }
+
+      .services-grid,
+      .benefits,
+      .process-grid,
+      .stats-grid,
+      .footer-container{
+        grid-template-columns:1fr;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
+    }
+
+    @media(max-width:480px){
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .floating-whatsapp{
+        width:54px;
+        height:54px;
+        right:18px;
+        bottom:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-box">
+      <img src="imagen de carga.gif" alt="IntegryTI" />
+      <span>IntegryTI SpA</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <a href="#inicio" class="brand">
+      <img style="width: 80px;" src="integryti_logo_512.svg" alt="IntegryTI SpA" />
+      Integry<span>TI</span>
+    </a>
+
+    <button class="mobile-btn" id="mobileBtn" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero -->
+  <main id="inicio" class="hero">
+    <div class="hero-container">
+      <div class="hero-text reveal">
+        <div class="badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          Soporte • Redes • Tecnología
+        </div>
+
+        <h1>
+          Soluciones <span>Tecnológicas</span><br />
+          para personas y empresas
+        </h1>
+
+        <p>
+          En IntegryTI SpA entregamos servicios de soporte informático, redes,
+          mantenimiento y soluciones tecnológicas con un enfoque profesional,
+          moderno y confiable.
+        </p>
+
+        <div class="hero-actions">
+<a href="#contacto" class="btn btn-primary btn-mobile-only">
+  <i class="fa-solid fa-paper-plane"></i>
+  Solicitar cotización
+</a>
+
+          <a href="https://wa.me/56938743520?text=Hola%20IntegryTI,%20quiero%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio." class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card reveal" id="contacto">
+        <h2>Conversemos</h2>
+        <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
+
+        <form action="enviar-correo.php" method="POST" id="contactForm">
+          <input type="text" name="nombre" placeholder="Nombre completo" required />
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <input type="text" name="telefono" placeholder="Teléfono" required />
+          <input type="text" name="empresa" placeholder="Empresa" />
+
+          <select name="servicio" required>
+            <option value="" selected disabled hidden>Servicio requerido</option>
+            <option value="Soporte técnico">Soporte técnico</option>
+            <option value="Redes y cableado">Redes y cableado</option>
+            <option value="Mantenimiento">Mantenimiento</option>
+            <option value="Desarrollo de Software">Desarrollo de Software</option>
+            <option value="Asesoría tecnológica">Asesoría tecnológica</option>
+          </select>
+
+          <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+
+          <button type="submit" class="btn btn-primary">
+            Enviar formulario
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="section-title reveal">
+      <span>NUESTROS SERVICIOS</span>
+      <h2>Servicios tecnológicos para tu operación diaria</h2>
+      <p>
+        Entregamos soluciones claras, prácticas y adaptadas a las necesidades reales de cada cliente.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h3>Soporte Técnico</h3>
+        <p>Diagnóstico, reparación, optimización y asistencia técnica para equipos computacionales.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <h3>Redes y Cableado</h3>
+        <p>Configuración de redes, routers, puntos de red, conectividad y ordenamiento básico de infraestructura.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-computer"></i></div>
+        <h3>Instalación y Configuración</h3>
+        <p>Instalación de sistemas, impresoras, periféricos, cuentas, programas y equipos de trabajo.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+        <h3>Mantenimiento</h3>
+        <p>Limpieza, formateo, mejora de rendimiento, respaldo y preparación de equipos.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Desarrollo de Software</h3>
+        <p>Desarrollo de páginas web, soluciones digitales y sistemas simples para apoyar procesos de negocio.</p>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-building-user"></i></div>
+        <h3>Soporte para Empresas</h3>
+        <p>Apoyo TI para negocios, oficinas y pymes que necesitan continuidad y atención profesional.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="process" id="proceso">
+    <div class="section-title reveal">
+      <span>CÓMO TRABAJAMOS</span>
+      <h2>Un proceso simple, claro y profesional</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div class="process-number">01</div>
+        <h3>Diagnóstico</h3>
+        <p>Analizamos el requerimiento, problema o necesidad tecnológica del cliente.</p>
+      </div>
+
+      <div class="process-card reveal">
+        <div class="process-number">02</div>
+        <h3>Evaluación</h3>
+        <p>Proponemos una solución clara, viable y ajustada al servicio solicitado.</p>
+      </div>
+
+      <div class="process-card reveal">
+        <div class="process-number">03</div>
+        <h3>Implementación</h3>
+        <p>Ejecutamos el servicio con orden, responsabilidad y enfoque técnico.</p>
+      </div>
+
+      <div class="process-card reveal">
+        <div class="process-number">04</div>
+        <h3>Soporte</h3>
+        <p>Entregamos orientación posterior y recomendaciones para mantener la continuidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué elegirnos -->
+  <section class="why-section">
+    <div class="why-container">
+      <div class="why-text reveal">
+        <span>POR QUÉ ELEGIRNOS</span>
+        <h2>Tecnología confiable para personas y empresas</h2>
+        <p>
+          Buscamos entregar un servicio cercano, serio y eficiente. Nuestra prioridad es que cada cliente reciba una solución clara, bien ejecutada y con una comunicación transparente.
+        </p>
+        <a href="#contacto" class="btn btn-primary">
+          Solicitar información
+        </a>
+      </div>
+
+      <div class="benefits reveal">
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Atención personalizada</div>
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Respuesta rápida</div>
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Soporte remoto y presencial</div>
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Soluciones eficientes</div>
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Compromiso y confianza</div>
+        <div class="benefit-card"><i class="fa-solid fa-check"></i> Tecnología para empresas y personas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros">
+    <div class="about-container">
+      <div class="about-card reveal">
+        <span style="color:#1D8FFF;font-weight:800;letter-spacing:1.5px;font-size:.85rem;">SOBRE INTEGRYTI</span>
+        <h2>Soluciones tecnológicas con enfoque práctico</h2>
+        <p>
+          IntegryTI SpA nace con el objetivo de entregar servicios tecnológicos confiables para personas, negocios y organizaciones que necesitan soporte, conectividad y soluciones digitales.
+        </p>
+        <p>
+          Nuestro enfoque combina atención cercana, claridad técnica y responsabilidad en cada servicio realizado.
+        </p>
+      </div>
+
+<div class="about-image reveal" aria-label="Equipo tecnológico"></div>
+    </div>
+  </section>
+
+  <!-- Estadísticas -->
+  <section>
+    <div class="section-title reveal">
+      <span>CONFIANZA</span>
+      <h2>Compromiso en cada servicio</h2>
+      <p>Indicadores referenciales que ayudan a transmitir experiencia y orden en la atención.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <h3>+100</h3>
+        <p>Equipos intervenidos</p>
+      </div>
+      <div class="stat-card reveal">
+        <h3>+50</h3>
+        <p>Clientes atendidos</p>
+      </div>
+      <div class="stat-card reveal">
+        <h3>+20</h3>
+        <p>Redes configuradas</p>
+      </div>
+      <div class="stat-card reveal">
+        <h3>&lt;24h</h3>
+        <p>Tiempo de respuesta</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+<!-- ===========================
+REDES SOCIALES | INTEGRYTI
+Requiere Font Awesome:
+=========================== -->
+
+<section class="cta-section">
+
+<style>
+
+.social-cta{
+
+max-width:1200px;
+
+margin:auto;
+
+background:
+linear-gradient(
+135deg,
+#071B34,
+#0D2F5E
+);
+
+padding:70px;
+
+border-radius:34px;
+
+display:grid;
+
+grid-template-columns:1fr auto;
+
+gap:50px;
+
+align-items:center;
+
+color:white;
+
+box-shadow:
+0 20px 60px
+rgba(7,27,52,.20);
+
+}
+
+.social-text span{
+
+color:#7ED9FF;
+
+font-size:.85rem;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+}
+
+.social-text h2{
+
+font-size:3rem;
+
+margin:18px 0;
+
+line-height:1.1;
+
+}
+
+.social-text p{
+
+color:#DCE6F2;
+
+line-height:1.8;
+
+max-width:650px;
+
+}
+
+.social-links{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.social-btn{
+
+width:68px;
+
+height:68px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:20px;
+
+font-size:1.6rem;
+
+color:white;
+
+transition:.3s;
+
+box-shadow:
+0 10px 25px
+rgba(0,0,0,.15);
+
+}
+
+.social-btn:hover{
+
+transform:
+translateY(-6px)
+scale(1.06);
+
+}
+
+.whatsapp{
+
+background:#25D366;
+
+}
+
+.instagram{
+
+background:
+linear-gradient(
+135deg,
+#833AB4,
+#FD1D1D,
+#FCAF45
+);
+
+}
+
+.facebook{
+
+background:#1877F2;
+
+}
+
+.linkedin{
+
+background:#0A66C2;
+
+}
+
+@media(max-width:900px){
+
+.social-cta{
+
+grid-template-columns:1fr;
+
+padding:40px;
+
+text-align:center;
+
+}
+
+.social-text h2{
+
+font-size:2rem;
+
+}
+
+.social-links{
+
+justify-content:center;
+
+}
+
+}
+
+</style>
+
+<div class="social-cta reveal">
+
+<div class="social-text">
+
+<span>
+
+CONECTA CON NOSOTROS
+
+</span>
+
+<h2>
+
+Sigue a IntegryTI
+
+</h2>
+
+<p>
+
+Mantente al día con nuestros
+servicios, soluciones
+tecnológicas y novedades.
+
+También puedes comunicarte
+directamente con nosotros a
+través de cualquiera de
+nuestros canales.
+
+</p>
+
+</div>
+
+<div class="social-links">
+
+<a
+
+href="https://wa.me/56938743520?text=Hola%20IntegryTI,%20quiero%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio."
+
+target="_blank"
+
+class="social-btn whatsapp"
+
+title="WhatsApp">
+
+<i class="fa-brands fa-whatsapp">
+
+</i>
+
+</a>
+
+<a
+
+href="https://instagram.com/"
+
+target="_blank"
+
+class="social-btn instagram"
+
+title="Instagram">
+
+<i class="fa-brands fa-instagram">
+
+</i>
+
+</a>
+
+<a
+
+href="https://facebook.com/"
+
+target="_blank"
+
+class="social-btn facebook"
+
+title="Facebook">
+
+<i class="fa-brands fa-facebook-f">
+
+</i>
+
+</a>
+
+<a
+
+href="https://linkedin.com/company/"
+
+target="_blank"
+
+class="social-btn linkedin"
+
+title="LinkedIn">
+
+<i class="fa-brands fa-linkedin-in">
+
+</i>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-brand">
+          <img src="integryti_logo_512.svg" alt="IntegryTI" />
+          Integry<span>TI</span>
+        </div>
+        <p>Soluciones Tecnológicas</p>
+        <p>Soporte • Redes • Desarrollo • Tecnología</p>
+      </div>
+
+      <div>
+        <div class="footer-title">Enlaces</div>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div>
+        <div class="footer-title">Contacto</div>
+        <p><i class="fa-solid fa-location-dot"></i> Chile</p>
+        <p><i class="fa-solid fa-envelope"></i> Soporte@integryti.cl</p>
+        <p><i class="fa-solid fa-envelope"></i> Contacto@integryti.cl</p>
+        <p><i class="fa-brands fa-whatsapp"></i> +56 9 3874 3520</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 IntegryTI SpA. Todos los derechos reservados.</span>
+      <span>IntegryTI</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <!--<a href="https://wa.me/56938743520?text=Hola%20IntegryTI,%20quiero%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio." class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>-->
+
+  <!-- Popup envío formulario -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <div class="popup-icon"><i class="fa-solid fa-check"></i></div>
+      <h2>Mensaje enviado</h2>
+      <p>Gracias por contactarte con IntegryTI SpA. Te responderemos a la brevedad.</p>
+      <button class="btn btn-primary" onclick="closePopup()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const loader = document.getElementById('loader');
+    const navbar = document.getElementById('navbar');
+    const mobileBtn = document.getElementById('mobileBtn');
+    const navLinks = document.getElementById('navLinks');
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 650);
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 40){
+        navbar.classList.add('scrolled');
+      }else{
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Menú móvil
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Animaciones reveal
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      revealElements.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if(elementTop < windowHeight - revealPoint){
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Formulario usando PHP local/hosting: enviar-correo.php
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+
+      submitButton.innerHTML = 'Enviando...';
+      submitButton.disabled = true;
+
+      const formData = new FormData(form);
+
+      try{
+        const response = await fetch(form.action, {
+          method:'POST',
+          body:formData
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+          popup.classList.add('active');
+          form.reset();
+
+          const select = form.querySelector('select');
+          if(select){
+            select.selectedIndex = 0;
+          }
+        }else{
+          alert(result.message || 'Ocurrió un error al enviar el formulario.');
+          if(result.error){
+            console.error('Detalle SMTP/PHP:', result.error);
+          }
+        }
+      }catch(error){
+        alert('No se pudo enviar el formulario. Revisa que estés usando un servidor con PHP y que enviar-correo.php responda JSON.');
+        console.error(error);
+      }finally{
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+      }
+    });
+
+    function closePopup(){
+      popup.classList.remove('active');
+    }
+
+    popup.addEventListener('click', function(e){
+      if(e.target === popup){
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>
