@@ -18,8 +18,7 @@
   <meta property="og:title" content="IntegryTI SpA | Soluciones Tecnológicas" />
   <meta property="og:description"
     content="Soporte informático, redes y soluciones tecnológicas para personas y empresas." />
-  <meta property="og:image"
-    content="https://rind-calzone-crouton.ngrok-free.dev/IntegryTI/IntegryTI/Untitled design.png" />
+  <meta property="og:image" content="https://rind-calzone-crouton.ngrok-free.dev/IntegryTI/untitled_design.png" />
   <meta property="og:url" content="https://integryti.cl" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="IntegryTI SpA | Soluciones Tecnológicas">
@@ -1616,6 +1615,15 @@
       transform: rotate(45deg);
 
     }
+/* Evita que la navbar fija tape las secciones al navegar con # */
+#inicio,
+#servicios,
+#faq,
+#why,
+#nosotros,
+#contacto {
+  scroll-margin-top: 120px;
+}
   </style>
 </head>
 
@@ -1632,7 +1640,7 @@
   <!-- Navbar -->
   <header class="navbar" id="navbar">
     <a href="#inicio" class="brand">
-      <img style="width: 80px;" src="integryti_logo_512.svg" alt="IntegryTI SpA" />
+      <img style="width: 60px;" src="integryti_logo_512.svg" alt="IntegryTI SpA" />
       Integry<span>TI</span>
     </a>
 
@@ -1642,7 +1650,7 @@
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#why">Por Qué Elegirnos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -2487,6 +2495,19 @@ Requiere Font Awesome:
   </div>
 
   <script>
+  // Siempre iniciar arriba al recargar la página
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+
+    // Opcional: elimina el #contacto, #servicios, etc. de la URL
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname);
+    }
+  });
     const loader = document.getElementById('loader');
     const navbar = document.getElementById('navbar');
     const mobileBtn = document.getElementById('mobileBtn');
