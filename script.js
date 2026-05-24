@@ -103,10 +103,16 @@
       }
     });
 
+    const closePopupBtn = document.getElementById('closePopupBtn');
+
     function closePopup() {
       popup.classList.remove('active');
     }
-
+    
+    if (closePopupBtn) {
+      closePopupBtn.addEventListener('click', closePopup);
+    }
+    
     popup.addEventListener('click', function (e) {
       if (e.target === popup) {
         closePopup();
