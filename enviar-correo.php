@@ -8,6 +8,9 @@ use PHPMailer\PHPMailer\Exception;
 // PHPMailer instalado manualmente
 require __DIR__ . '/vendor/autoload.php';
 
+// Cargar configuración privada
+$config = require dirname(__DIR__) . '/config-mail.php';
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo json_encode([
         "success" => false,
@@ -25,12 +28,36 @@ $telefono = trim($_POST["telefono"] ?? "");
 $empresa  = trim($_POST["empresa"] ?? "");
 $servicio = trim($_POST["servicio"] ?? "");
 $mensaje  = trim($_POST["mensaje"] ?? "");
+$website = trim($_POST["website"] ?? "");
+
+if ($website !== "") {
+    echo json_encode([
+        "success" => false,
+        "message" => "Solicitud rechazada."
+    ]);
+    exit;
+}
 
 // Validación básica
 if ($nombre === "" || $email === "" || $telefono === "" || $servicio === "" || $mensaje === "") {
     echo json_encode([
         "success" => false,
         "message" => "Faltan campos obligatorios."
+    ]);
+    exit;
+}
+
+if (
+    mb_strlen($nombre) > 100 ||
+    mb_strlen($email) > 150 ||
+    mb_strlen($telefono) > 30 ||
+    mb_strlen($empresa) > 100 ||
+    mb_strlen($servicio) > 100 ||
+    mb_strlen($mensaje) > 2000
+) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Uno o más campos superan el largo permitido."
     ]);
     exit;
 }
@@ -43,26 +70,40 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+$serviciosPermitidos = [
+    "Soporte técnico",
+    "Redes y cableado",
+    "Mantenimiento",
+    "Desarrollo de Software",
+    "Asesoría tecnológica"
+];
+
+if (!in_array($servicio, $serviciosPermitidos, true)) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Servicio no válido."
+    ]);
+    exit;
+}
+
 $mail = new PHPMailer(true);
 
 try {
     // Configuración SMTP Gmail
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
+    $mail->Host       = $config['SMTP_HOST'];
     $mail->SMTPAuth   = true;
-
-    $mail->Username   = 'contacto@integryti.cl';
-    $mail->Password   = 'xgem fzbe ppow toga';
-
+    
+    $mail->Username   = $config['SMTP_USER'];
+    $mail->Password   = $config['SMTP_PASS'];
+    
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
-
+    $mail->Port       = $config['SMTP_PORT'];
     // Charset
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('contacto@integryti.cl', 'Formulario IntegryTI');
+    $mail->setFrom($config['SMTP_FROM'], $config['SMTP_FROM_NAME']);
 
-    $mail->addAddress($destinatario);
+    $mail->addAddress($config['MAIL_TO']);
 
 
     $mail->addReplyTo($email, $nombre);
@@ -71,15 +112,19 @@ try {
     $mail->isHTML(true);
     $mail->Subject = 'Nuevo contacto desde formulario IntegryTI';
 
-    $mail->Body = "
-        <h2>Nuevo mensaje desde el sitio web de IntegryTI</h2>
-        <p><strong>Nombre:</strong> {$nombre}</p>
-        <p><strong>Correo:</strong> {$email}</p>
-        <p><strong>Teléfono:</strong> {$telefono}</p>
-        <p><strong>Empresa:</strong> {$empresa}</p>
-        <p><strong>Servicio requerido:</strong> {$servicio}</p>
-        <p><strong>Mensaje:</strong><br>{$mensaje}</p>
-    ";
+    $nombreSafe   = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
+    $emailSafe    = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+    $telefonoSafe = htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');
+    $empresaSafe  = htmlspecialchars($empresa, ENT_QUOTES, 'UTF-8');
+    $servicioSafe = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
+    $mensajeSafe  = nl2br(htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8'));
+
+    $nombreSafe   = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
+    $emailSafe    = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+    $telefonoSafe = htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');
+    $empresaSafe  = htmlspecialchars($empresa, ENT_QUOTES, 'UTF-8');
+    $servicioSafe = htmlspecialchars($servicio, ENT_QUOTES, 'UTF-8');
+    $mensajeSafe  = nl2br(htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8'));
 
     $mail->AltBody = "
 Nuevo mensaje desde el sitio web de IntegryTI
@@ -102,10 +147,11 @@ $mensaje
     ]);
 
 } catch (Exception $e) {
+    error_log("Error formulario IntegryTI: " . $mail->ErrorInfo);
+
     echo json_encode([
         "success" => false,
-        "message" => "No se pudo enviar el correo.",
-        "error" => $mail->ErrorInfo
+        "message" => "No se pudo enviar el correo. Intenta nuevamente más tarde."
     ]);
 }
 

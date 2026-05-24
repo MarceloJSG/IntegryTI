@@ -22,7 +22,17 @@
   <meta property="og:url" content="https://integryti.cl" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="IntegryTI SpA | Soluciones Tecnológicas">
-
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline';
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' data: https:;
+    connect-src 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+  ">
 
 
   <!-- Favicon -->
@@ -129,6 +139,13 @@
         <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
 
         <form action="enviar-correo.php" method="POST" id="contactForm">
+          <input 
+            type="text" 
+            name="website" 
+            autocomplete="off" 
+            tabindex="-1" 
+            style="position:absolute; left:-9999px; opacity:0;"
+          >
           <input type="text" name="nombre" placeholder="Nombre completo" required />
           <input type="email" name="email" placeholder="Correo electrónico" required />
           <input type="text" name="telefono" placeholder="Teléfono" required />

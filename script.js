@@ -84,7 +84,7 @@
         if (result.success) {
           popup.classList.add('active');
           form.reset();
-
+        
           const select = form.querySelector('select');
           if (select) {
             select.selectedIndex = 0;
@@ -96,8 +96,7 @@
           }
         }
       } catch (error) {
-        alert('No se pudo enviar el formulario. Revisa que estés usando un servidor con PHP y que enviar-correo.php responda JSON.');
-        console.error(error);
+        alert('No se pudo enviar el formulario. Intenta nuevamente más tarde.');
       } finally {
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
